@@ -17,31 +17,51 @@
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             color: #333;
             line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
+            height: 100vh;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.05" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+            z-index: -1;
         }
 
         .container {
             width: 100%;
-            max-width: 800px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            max-width: 850px;
+            height: 90vh;
+            max-height: 800px;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
 
         .form-header {
-            background: linear-gradient(135deg, rgba(79, 109, 245, 0.9) 0%, rgba(58, 86, 212, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(79, 109, 245, 0.95) 0%, rgba(58, 86, 212, 0.95) 100%);
             color: white;
-            padding: 20px 30px;
+            padding: 22px 30px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 10;
         }
 
         .form-header::before {
@@ -51,36 +71,59 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
             transform: rotate(30deg);
         }
 
         .form-header h1 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             margin-bottom: 8px;
-            font-weight: 600;
+            font-weight: 700;
             position: relative;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .form-header p {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 0.95rem;
+            opacity: 0.95;
             position: relative;
+            font-weight: 500;
         }
 
-        form {
+        .form-body {
+            flex: 1;
+            overflow-y: auto;
             padding: 30px;
+            scrollbar-width: thin;
+            scrollbar-color: #c5c5c5 transparent;
+        }
+
+        .form-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .form-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .form-body::-webkit-scrollbar-thumb {
+            background-color: #c5c5c5;
+            border-radius: 10px;
+        }
+
+        .form-body::-webkit-scrollbar-thumb:hover {
+            background-color: #a5a5a5;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             position: relative;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 500;
+            font-weight: 600;
             color: #444;
             font-size: 0.95rem;
         }
@@ -91,48 +134,75 @@
 
         input, select, textarea {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            padding: 14px 16px;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
             font-size: 16px;
             transition: all 0.3s;
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: #4f6df5;
-            box-shadow: 0 0 0 3px rgba(79, 109, 245, 0.2);
+            box-shadow: 0 0 0 3px rgba(79, 109, 245, 0.25);
             background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
         }
 
         small {
             display: block;
-            margin-top: 5px;
+            margin-top: 6px;
             color: #777;
             font-size: 0.8rem;
         }
 
         .payment-section {
-            background: rgba(248, 249, 250, 0.7);
-            padding: 20px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.9) 0%, rgba(240, 242, 245, 0.9) 100%);
+            padding: 24px;
+            border-radius: 18px;
             margin: 25px 0;
             border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, #4f6df5, #3a56d4);
         }
 
         .payment-section h3 {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             color: #3a56d4;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .payment-section h3::before {
+            content: '💰';
+            font-size: 1.5rem;
         }
 
         .payment-amount {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 18px;
             color: #2ecc71;
+            background: rgba(46, 204, 113, 0.1);
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: inline-block;
         }
 
         .upi-details {
@@ -148,24 +218,34 @@
         }
 
         #upiId {
-            font-weight: 600;
+            font-weight: 700;
             color: #3a56d4;
+            background: rgba(58, 86, 212, 0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.1rem;
         }
 
         .copy-btn {
             background: #3a56d4;
             color: white;
             border: none;
-            padding: 6px 12px;
-            border-radius: 5px;
+            padding: 8px 14px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 5px rgba(58, 86, 212, 0.3);
         }
 
         .copy-btn:hover {
             background: #2a46c4;
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(58, 86, 212, 0.4);
         }
 
         .qr-code-container {
@@ -174,9 +254,9 @@
         }
 
         .qr-code-placeholder {
-            background: rgba(255, 255, 255, 0.8);
-            border: 2px dashed rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px dashed rgba(79, 109, 245, 0.3);
+            border-radius: 12px;
             padding: 20px;
             margin: 15px 0;
             min-height: 200px;
@@ -185,11 +265,25 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qr-code-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(79, 109, 245, 0.05) 0%, rgba(58, 86, 212, 0.05) 100%);
         }
 
         .qr-code-placeholder:hover {
             background: rgba(255, 255, 255, 1);
-            border-color: rgba(79, 109, 245, 0.5);
+            border-color: rgba(79, 109, 245, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
         }
 
         .qr-code-placeholder img {
@@ -201,48 +295,94 @@
         .qr-placeholder-text {
             color: #777;
             margin-top: 10px;
+            font-weight: 500;
         }
 
         .pay-btn {
             background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
+            padding: 14px 25px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             width: 100%;
             transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pay-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
 
         .pay-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 6px 18px rgba(46, 204, 113, 0.5);
+        }
+
+        .pay-btn:hover::before {
+            left: 100%;
+        }
+
+        .form-footer {
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+            z-index: 10;
         }
 
         .submit-btn {
             background: linear-gradient(135deg, #4f6df5 0%, #3a56d4 100%);
             color: white;
             border: none;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1.15rem;
+            font-weight: 700;
             cursor: pointer;
             width: 100%;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(79, 109, 245, 0.4);
+            box-shadow: 0 4px 15px rgba(79, 109, 245, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
 
         .submit-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(79, 109, 245, 0.5);
+            box-shadow: 0 6px 20px rgba(79, 109, 245, 0.6);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
         }
 
         /* Modal Styles */
@@ -262,13 +402,13 @@
             background-color: white;
             margin: 10% auto;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 20px;
             width: 90%;
             max-width: 500px;
             text-align: center;
             position: relative;
             animation: slideIn 0.3s;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
         }
 
         @keyframes fadeIn {
@@ -283,12 +423,13 @@
 
         .close {
             position: absolute;
-            right: 15px;
-            top: 15px;
+            right: 20px;
+            top: 20px;
             color: #aaa;
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.3s;
         }
 
         .close:hover {
@@ -296,36 +437,41 @@
         }
 
         .modal-icon {
-            font-size: 4rem;
+            font-size: 4.5rem;
             color: #2ecc71;
             margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
         }
 
         .modal h2 {
             margin-bottom: 15px;
             color: #3a56d4;
+            font-weight: 700;
         }
 
         .modal p {
             margin-bottom: 25px;
             color: #555;
+            line-height: 1.6;
         }
 
         .modal-btn {
             background: #3a56d4;
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 1rem;
+            padding: 14px 35px;
+            border-radius: 10px;
+            font-size: 1.05rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(58, 86, 212, 0.4);
         }
 
         .modal-btn:hover {
             background: #2a46c4;
             transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(58, 86, 212, 0.5);
         }
 
         /* Responsive Design */
@@ -335,42 +481,47 @@
             }
             
             .container {
-                border-radius: 15px;
+                border-radius: 18px;
+                height: 95vh;
             }
             
             .form-header {
-                padding: 15px 20px;
+                padding: 18px 20px;
             }
             
             .form-header h1 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
             
-            form {
+            .form-body {
                 padding: 20px;
             }
             
+            .form-footer {
+                padding: 15px 20px;
+            }
+            
             .payment-section {
-                padding: 15px;
+                padding: 18px;
             }
             
             .modal-content {
                 margin: 20% auto;
-                padding: 20px;
+                padding: 25px;
             }
         }
 
         @media (max-width: 480px) {
             .form-header h1 {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
             
             .form-header p {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
             }
             
             input, select, textarea {
-                padding: 10px;
+                padding: 12px;
             }
             
             .upi-details p {
@@ -379,23 +530,9 @@
             }
         }
 
-        .floating-label {
-            position: relative;
-        }
-
-        .floating-label input:focus + label, 
-        .floating-label input:not(:placeholder-shown) + label {
-            top: -10px;
-            left: 10px;
-            font-size: 0.8rem;
-            background: white;
-            padding: 0 5px;
-            color: #4f6df5;
-        }
-
         .form-row {
             display: flex;
-            gap: 15px;
+            gap: 18px;
         }
 
         .form-row .form-group {
@@ -408,6 +545,17 @@
                 gap: 0;
             }
         }
+
+        /* Floating animation for container */
+        .container {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
     </style>
 </head>
 <body>
@@ -417,89 +565,93 @@
             <p>Fill in the details below to register for our Bhagvat Gita classes</p>
         </div>
         
-        <form id="registrationForm" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="name">Full Name <span class="required">*</span></label>
-                <input type="text" id="name" name="name" required placeholder="Enter your full name">
-            </div>
-            
-            <div class="form-group">
-                <label for="class_grade">Class (1 to 10) <span class="required">*</span></label>
-                <select id="class_grade" name="class_grade" required>
-                    <option value="">Select Class</option>
-                    <option value="1">Class 1</option>
-                    <option value="2">Class 2</option>
-                    <option value="3">Class 3</option>
-                    <option value="4">Class 4</option>
-                    <option value="5">Class 5</option>
-                    <option value="6">Class 6</option>
-                    <option value="7">Class 7</option>
-                    <option value="8">Class 8</option>
-                    <option value="9">Class 9</option>
-                    <option value="10">Class 10</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="school_name">School Name <span class="required">*</span></label>
-                <input type="text" id="school_name" name="school_name" required placeholder="Enter your school name">
-            </div>
-            
-            <div class="form-group">
-                <label for="language">Bhagvat Gita Language <span class="required">*</span></label>
-                <select id="language" name="language" required>
-                    <option value="">Select Language</option>
-                    <option value="hindi">Hindi</option>
-                    <option value="odia">Odia</option>
-                    <option value="english">English</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="contact_no">Contact Number <span class="required">*</span></label>
-                <input type="tel" id="contact_no" name="contact_no" pattern="[0-9]{10}" required placeholder="Enter 10-digit mobile number">
-                <small>Enter 10-digit mobile number</small>
-            </div>
-            
-            <div class="payment-section">
-                <h3>Payment Details</h3>
-                <p class="payment-amount">Amount: ₹250</p>
-                
-                <div class="upi-details">
-                    <p>UPI ID: <span id="upiId">9861828508@ybl</span> 
-                       <button type="button" id="copyUpiBtn" class="copy-btn">
-                           <i class="fas fa-copy"></i> Copy
-                       </button>
-                    </p>
-                    
-                    <div class="qr-code-container">
-                        <p>Scan QR Code to Pay</p>
-                        <div class="qr-code-placeholder">
-                            <!-- You can add your QR code image here -->
-                            <img src="" alt="QR Code" id="qrCodeImage">
-                            <p class="qr-placeholder-text">Add your QR code image</p>
-                        </div>
-                    </div>
-                    
-                    <button type="button" id="openUpiBtn" class="pay-btn">
-                        <i class="fas fa-wallet"></i> Pay Now
-                    </button>
+        <div class="form-body">
+            <form id="registrationForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Full Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
                 </div>
                 
                 <div class="form-group">
-                    <label for="payment_screenshot">Upload Payment Screenshot <span class="required">*</span></label>
-                    <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required>
-                    <small>Upload a screenshot of your payment confirmation</small>
+                    <label for="class_grade">Class (1 to 10) <span class="required">*</span></label>
+                    <select id="class_grade" name="class_grade" required>
+                        <option value="">Select Class</option>
+                        <option value="1">Class 1</option>
+                        <option value="2">Class 2</option>
+                        <option value="3">Class 3</option>
+                        <option value="4">Class 4</option>
+                        <option value="5">Class 5</option>
+                        <option value="6">Class 6</option>
+                        <option value="7">Class 7</option>
+                        <option value="8">Class 8</option>
+                        <option value="9">Class 9</option>
+                        <option value="10">Class 10</option>
+                    </select>
                 </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="remarks">Remarks</label>
-                <textarea id="remarks" name="remarks" rows="3" placeholder="Any additional comments..."></textarea>
-            </div>
-            
-            <button type="submit" class="submit-btn">Submit Registration</button>
-        </form>
+                
+                <div class="form-group">
+                    <label for="school_name">School Name <span class="required">*</span></label>
+                    <input type="text" id="school_name" name="school_name" required placeholder="Enter your school name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="language">Bhagvat Gita Language <span class="required">*</span></label>
+                    <select id="language" name="language" required>
+                        <option value="">Select Language</option>
+                        <option value="hindi">Hindi</option>
+                        <option value="odia">Odia</option>
+                        <option value="english">English</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact_no">Contact Number <span class="required">*</span></label>
+                    <input type="tel" id="contact_no" name="contact_no" pattern="[0-9]{10}" required placeholder="Enter 10-digit mobile number">
+                    <small>Enter 10-digit mobile number</small>
+                </div>
+                
+                <div class="payment-section">
+                    <h3>Payment Details</h3>
+                    <p class="payment-amount">Amount: ₹250</p>
+                    
+                    <div class="upi-details">
+                        <p>UPI ID: <span id="upiId">9861828508@ybl</span> 
+                           <button type="button" id="copyUpiBtn" class="copy-btn">
+                               <i class="fas fa-copy"></i> Copy
+                           </button>
+                        </p>
+                        
+                        <div class="qr-code-container">
+                            <p>Scan QR Code to Pay</p>
+                            <div class="qr-code-placeholder">
+                                <!-- You can add your QR code image here -->
+                                <img src="" alt="QR Code" id="qrCodeImage">
+                                <p class="qr-placeholder-text">Add your QR code image</p>
+                            </div>
+                        </div>
+                        
+                        <button type="button" id="openUpiBtn" class="pay-btn">
+                            <i class="fas fa-wallet"></i> Pay Now
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="payment_screenshot">Upload Payment Screenshot <span class="required">*</span></label>
+                        <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required>
+                        <small>Upload a screenshot of your payment confirmation</small>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="remarks">Remarks</label>
+                    <textarea id="remarks" name="remarks" rows="3" placeholder="Any additional comments..."></textarea>
+                </div>
+            </form>
+        </div>
+        
+        <div class="form-footer">
+            <button type="submit" class="submit-btn" form="registrationForm">Submit Registration</button>
+        </div>
     </div>
     
     <!-- Confirmation Modal -->
